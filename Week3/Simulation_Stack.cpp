@@ -17,7 +17,7 @@ int main()
         }
         else if(line == "POP"){
             if(s.empty())
-                cout<<"NULL";
+                cout<<"NULL"<<endl;
             else{
                 cout << s.top()<<endl;
                 s.pop();
