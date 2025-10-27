@@ -18,6 +18,7 @@ int main() {
         //(a × b) mod m = [(a mod m) × (b mod m)] mod m
 
         // Tính hash từ phải sang trái
+        // Duyệt từ cuối chuỗi lên đầu
         for (int j = s.length() - 1; j >= 0; j--) {
             hash = (hash + (s[j] * power) % m) % m;
             power = (power * 256) % m;
