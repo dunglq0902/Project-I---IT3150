@@ -15,7 +15,7 @@ void dfs(int u) {
     
     for (int v : adj[u]) {
         if (!visited[v]) {
-            dfs(v);
+            dfs(v); //Chạy đệ quy nếu chưa đi qua đỉnh v
         }
     }
 }
@@ -31,7 +31,7 @@ int main() {
     for (int i = 0; i < m; i++) {
         int u, v;
         cin >> u >> v;
-        adj[u].push_back(v);
+        adj[u].push_back(v);    //Nhập vào các đỉnh kề v của u
         adj[v].push_back(u);
     }
     
@@ -41,10 +41,19 @@ int main() {
     }
     
     // Khởi tạo mảng visited
-    memset(visited, false, sizeof(visited));
+    memset(visited, false, sizeof(visited));    //memory set
     
     // Duyệt DFS từ đỉnh 1
     dfs(1);
     
     return 0;
 }
+
+// Bắt đầu từ 1: 1
+// Từ 1 → 2 (nhỏ nhất trong [2,3])
+// Từ 2 → 3 (nhỏ nhất trong [1,3,4,7], bỏ 1 vì đã thăm)
+// Từ 3 → 5 (nhỏ nhất trong [1,2,5,7], bỏ 1,2 vì đã thăm)
+// Từ 5 → 4 (nhỏ nhất trong [3,4,6,7], bỏ 3 vì đã thăm)
+// Từ 4 → 6 (nhỏ nhất trong [2,5,6,7], bỏ 2,5 vì đã thăm)
+// Từ 6 không đi tiếp được (các đỉnh kề đã thăm)
+// Quay lại 4 → 7 (tiếp theo trong danh sách)
